@@ -1,3 +1,13 @@
+// Basic Data Structures
+/*
+Data can be stored and accessed in many ways.
+You already know some common JavaScript data structures — arrays and objects.
+
+In this Basic Data Structures course, you'll learn more about the differences between arrays and objects,
+and which to use in different situations.
+You'll also learn how to use helpful JS methods like splice() and Object.keys() to access and manipulate data.
+*/
+
 // 8. Copy an Array with the Spread Operator
 /*
 We have defined a function, copyMachine which takes arr (an array) and num (a number) as arguments.
@@ -151,3 +161,180 @@ userActivity.data.online = 45;
 // Only change code above this line
 
 console.log(userActivity);
+
+// 15. Access Property Names with Bracket Notation
+/*
+We've defined a function, checkInventory, which receives a scanned item as an argument.
+Return the current value of the scannedItem key in the foods object.
+You can assume that only valid keys will be provided as an argument to checkInventory.
+*/
+
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27
+};
+
+function checkInventory(scannedItem) {
+  // Only change code below this line
+  return foods[scannedItem];
+  // Only change code above this line
+}
+
+console.log(checkInventory("apples"));
+
+// 16. Use the delete Keyword to Remove Object Properties
+/*
+Use the delete keyword to remove the oranges, plums, and strawberries keys from the foods object.
+*/
+
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27
+};
+
+// Only change code below this line
+delete foods.oranges;
+delete foods.plums;
+delete foods.strawberries;
+// Only change code above this line
+
+console.log(foods);
+
+// 17. Check if an Object has a Property
+/*
+Finish writing the function so that it returns true if the object passed to it
+contains all four names, Alan, Jeff, Sarah and Ryan and returns false otherwise.
+*/
+
+let users = {
+  Alan: {
+    age: 27,
+    online: true
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: true
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function isEveryoneHere(userObj) {
+  // Only change code below this line
+  if (userObj.hasOwnProperty('Alan') && userObj.hasOwnProperty('Jeff') && userObj.hasOwnProperty('Sarah') && userObj.hasOwnProperty('Ryan')) {
+    return true;
+  } else {
+    return false;
+  }
+  // Only change code above this line
+}
+
+console.log(isEveryoneHere(users));
+
+// 18. Iterate Through the Keys of an Object with a for...in Statement
+/*
+We've defined a function countOnline which accepts one argument (a users object).
+Use a for...in statement within this function to loop through the users object
+passed into the function and return the number of users whose online property is set to true.
+An example of a users object which could be passed to countOnline is shown below.
+Each user will have an online property with either a true or false value.
+*/
+
+function countOnline(usersObj) {
+  // Only change code below this line
+  let result = 0;
+  for (let user in usersObj) {
+    if (usersObj[user].online === true) {
+      result++;
+    }
+  }
+  return result;
+  // Only change code above this line
+}
+
+// 19. Generate an Array of All Object Keys with Object.keys()
+/*
+Finish writing the getArrayOfUsers function so that
+it returns an array containing all the properties in the object it receives as an argument.
+*/
+
+let users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function getArrayOfUsers(obj) {
+  // Only change code below this line
+  return Object.keys(obj);
+  // Only change code above this line
+}
+
+console.log(getArrayOfUsers(users));
+
+// 20. Modify an Array Stored in an Object
+/*
+Take a look at the object we've provided in the code editor.
+The user object contains three keys.
+The data key contains five keys, one of which contains an array of friends.
+From this, you can see how flexible objects are as data structures.
+We've started writing a function addFriend.
+Finish writing it so that it takes a user object and adds the name of the friend argument
+to the array stored in user.data.friends and returns that array.
+*/
+
+let user = {
+  name: 'Kenneth',
+  age: 28,
+  data: {
+    username: 'kennethCodesAllDay',
+    joinDate: 'March 26, 2016',
+    organization: 'freeCodeCamp',
+    friends: [
+      'Sam',
+      'Kira',
+      'Tomo'
+    ],
+    location: {
+      city: 'San Francisco',
+      state: 'CA',
+      country: 'USA'
+    }
+  }
+};
+
+function addFriend(userObj, friend) {
+  // Only change code below this line
+  userObj.data.friends.push(friend);
+  return userObj.data.friends;
+  // Only change code above this line
+}
+
+console.log(addFriend(user, 'Pete'));
