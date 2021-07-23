@@ -35,11 +35,61 @@ Your result must be a string.
 */
 
 function reverseString(str) {
-  let astr = "";
-  for (let i = str.length - 1; i >= 0; i--) {
-    astr += str[i];
+  let astr = ""; // create a variable to store the reversed string
+  for (let i = str.length - 1; i >= 0; i--) { // iterating backwards using for
+    astr += str[i]; // fill a string backwards
   }
   return astr;
 }
 
 reverseString("hello");
+
+// 3. Factorialize a Number
+/*
+Return the factorial of the provided integer.
+
+If the integer is represented with the letter n, a factorial is the product of all positive integers less than or equal to n.
+
+Factorials are often represented with the shorthand notation n!
+
+For example: 5! = 1 * 2 * 3 * 4 * 5 = 120
+
+Only integers greater than or equal to zero will be supplied to the function.
+*/
+
+function factorialize(num) {
+  if (num == 0) { // for isolating the 0 factorial
+    return 1;
+  } else {
+  for (let i = num - 1; i > 0; i--) { // loop starting from n - 1
+    num *= i; // multiply the initial number with n - 1 and assign the product to var num
+  }
+  return num; // return the factorial
+  }
+}
+
+factorialize(5);
+
+// Alternative solution using recursion. Source: fcc hints
+function factorialize(num) {
+  if (num === 0) {
+    return 1;
+  }
+  return num * factorialize(num - 1);
+}
+
+factorialize(5);
+
+// 4. Find the Longest Word in a String
+/*
+Return the length of the longest word in the provided sentence.
+
+Your response should be a number.
+*/
+
+function findLongestWordLength(str) {
+  
+  return str.length;
+}
+
+findLongestWordLength("The quick brown fox jumped over the lazy dog");
