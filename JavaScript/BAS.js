@@ -88,8 +88,100 @@ Your response should be a number.
 */
 
 function findLongestWordLength(str) {
-  
-  return str.length;
+  let arrStr = str.match(/\w+/g); // Create an array made of words from str
+  let longest = arrStr[0].length; // Determine the first words's length as the initial number
+  for (let i = 0; i < arrStr.length; i++) { // Iterate through the array
+     if (longest < arrStr[i].length) {
+       longest = arrStr[i].length;
+     }
+  }
+  return longest;
 }
 
 findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+// 5. Return Largest Numbers in Arrays
+/*
+Return an array consisting of the largest number from each provided sub-array.
+For simplicity, the provided array will contain exactly 4 sub-arrays.
+Remember, you can iterate through an array with a simple for loop, and access each member with array syntax arr[i].
+*/
+
+function largestOfFour(arr) {
+  let newArr = []; // Create an empty array
+  for (let i = 0; i < arr.length; i++) { // Iterate through the main array
+    let largestN = arr[i][0]; // Set the largest number as the first number in the sub-array
+    for (let j = 0; j < arr[i].length; j++) { // Iterate through the sub arrays
+      if (largestN < arr[i][j]) { // Start comparing and set the largest number
+        largestN = arr[i][j];
+      }
+    }
+    newArr.push(largestN); // Fill the empty array with the largest number found in the second loop
+  }
+  return newArr;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+// 6. Confirm the Ending
+/*
+Check if a string (first argument, str) ends with the given target string (second argument, target).
+This challenge can be solved with the .endsWith() method, which was introduced in ES2015.
+But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
+*/
+
+function confirmEnding(str, target) {
+  let newPhrase = ""; // Create an empty variable
+  for (let i = str.length - target.length; i < str.length; i++) { // Iterate through the last nth characters in a string. N = length of target
+    newPhrase += str[i]; // A new string created. It has the same length with the target
+  }
+  return newPhrase == target; // Comparing
+}
+
+confirmEnding("Bastian", "an");
+
+// 7. Repeat a String Repeat a String
+/*
+Repeat a given string str (first argument) for num times (second argument).
+Return an empty string if num is not a positive number.
+For the purpose of this challenge, do not use the built-in .repeat() method.
+*/
+
+// My own solution
+
+function repeatStringNumTimes(str, num) {
+  let newStr = ""; // Create an empty string
+  if (num < 0) { // If num is less than 0, return an empty string
+    return "";
+  } else {
+    for (let i = 0; i < num; i++) {
+      newStr += str; // Fill the empty string with str for a num of times
+    }
+  }
+  return newStr; // Return the repeated strings
+}
+
+repeatStringNumTimes("abc", 3);
+
+// Alternative solutions from freeCodeCamp:
+
+function repeatStringNumTimes(str, num) {
+  var accumulatedStr = "";
+
+  while (num > 0) {
+    accumulatedStr += str;
+    num--;
+  }
+
+  return accumulatedStr;
+}
+
+// Solution with recursion from freeCodeCamp:
+
+function repeatStringNumTimes(str, num) {
+  if (num < 1) {
+    return "";
+  } else {
+    return str + repeatStringNumTimes(str, num - 1);
+  }
+}
