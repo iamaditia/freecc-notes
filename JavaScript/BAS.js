@@ -185,3 +185,66 @@ function repeatStringNumTimes(str, num) {
     return str + repeatStringNumTimes(str, num - 1);
   }
 }
+
+// 8. Truncate a String
+/*
+Truncate a string (first argument) if it is longer than the given maximum string length (second argument).
+Return the truncated string with a ... ending.
+*/
+
+function truncateString(str, num) {
+  let newStr = ""; // Create an empty string
+  if (num < str.length) {
+    for (let i = 0; i < num; i++) { // If num is less than str's length, create a new string which consist num's length of characters
+    newStr += str[i];
+    }
+    return newStr + "..."; // Add the ... part
+  } else {
+    return str; // If num >= str's length, return the original str
+  }
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 8);
+
+// Solution from freeCodeCamp using slice
+
+function truncateString(str, num) {
+  if (str.length > num) {
+    return str.slice(0, num) + "...";
+  } else {
+    return str;
+  }
+}
+
+// A more concise solution using ternary operator
+function truncateString(str, num) {
+  return str.length > num ? str.slice(0, num) + "..." : str;
+}
+
+// 9. Finders Keepers
+/*
+Create a function that looks through an array arr and returns the first element in it
+that passes a 'truth test'.
+This means that given an element x, the 'truth test' is passed if func(x) is true.
+If no element passes the test, return undefined.
+*/
+
+function findElement(arr, func) {
+  let num = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (func(arr[i]) == true) {
+    num = arr[i];
+    return num
+    }
+  }
+}
+
+findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+// Recursive solution from freeCodeCamp
+
+function findElement(arr, func) {
+  return arr.length && !func(arr[0])
+    ? findElement(arr.slice(1), func)
+    : arr[0];
+}
