@@ -248,3 +248,41 @@ function findElement(arr, func) {
     ? findElement(arr.slice(1), func)
     : arr[0];
 }
+
+// 10. Boo who
+/*
+Check if a value is classified as a boolean primitive. Return true or false.
+
+Boolean primitives are true and false.
+*/
+
+function booWho(bool) {
+  if (bool === true | bool === false) {
+    return true;
+  } else {
+    return false
+  }
+}
+
+booWho(null);
+
+// Solution using typeof:
+
+function booWho(bool) {
+  return typeof bool === "boolean";
+}
+
+booWho(null);
+
+// 11. Title Case a Sentence
+/*
+Return the provided string with the first letter of each word capitalized.
+Make sure the rest of the word is in lower case.
+For the purpose of this exercise, you should also capitalize connecting words like the and of.
+*/
+
+function titleCase(str) {
+  return str;
+}
+
+titleCase("I'm a little tea pot");
