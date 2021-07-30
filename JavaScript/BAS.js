@@ -300,8 +300,15 @@ Begin inserting elements at index n of the second array.
 Return the resulting array. The input arrays should remain the same after the function runs.
 */
 
+// Solution from freeCodeCamp
+
 function frankenSplice(arr1, arr2, n) {
-  return arr2;
+  let arr3 = [...arr2];
+  for (let i = 0; i < arr1.length; i++) {
+    arr3.splice(n, 0, arr1[i]);
+    n++;
+  }
+  return arr3;
 }
 
 frankenSplice([1, 2, 3], [4, 5, 6], 1);
