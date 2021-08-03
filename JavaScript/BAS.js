@@ -411,4 +411,43 @@ function mutation(arr) {
 
 mutation(["hello", "Hello"]);
 
-// freeCodeCamp solution
+// 16. Chunky Monkey
+/*
+Write a function that splits an array (first argument)
+into groups the length of size (second argument) and returns them as a two-dimensional array.
+*/
+
+// 1st attempt returned [ [ 'a', 'b' ], [] ]
+
+function chunkArrayInGroups(arr, size) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i += size) {
+    newArr.push(arr.slice(i, size));
+  }
+  return newArr;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+// 2nd attempt returned the correct answer but manual, no loop
+
+function chunkArrayInGroups(arr, size) {
+  let newArr = [];
+  newArr.push(arr.slice(0, 2));
+  newArr.push(arr.slice(2, 4));
+  return newArr;
+}
+
+// 3rd attempt CORRECT!
+
+function chunkArrayInGroups(arr, size) {
+  let newArr = [];
+  let n = size;
+  for (let i = 0; i < arr.length; i+=size) {
+    newArr.push(arr.slice(i, n));
+    n+=size;
+  }
+  return newArr;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
