@@ -245,3 +245,257 @@ let beagle = new Dog("Snoopy");
 // Only change code below this line
 
 Dog.prototype.isPrototypeOf(beagle);
+
+// 16. Understand the Prototype Chain
+/*
+Modify the code to show the correct prototype chain.
+*/
+
+function Dog(name) {
+  this.name = name;
+}
+
+let beagle = new Dog("Snoopy");
+
+Dog.prototype.isPrototypeOf(beagle);  // yields true
+
+// Fix the code below so that it evaluates to true
+Object.prototype.isPrototypeOf(Dog.prototype);
+
+// 17. Use Inheritance So You Don't Repeat Yourself
+/*
+The eat method is repeated in both Cat and Bear.
+Edit the code in the spirit of DRY by moving the eat method
+to the Animal supertype.
+*/
+
+function Cat(name) {
+  this.name = name;
+}
+
+Cat.prototype = {
+  constructor: Cat,
+};
+
+function Bear(name) {
+  this.name = name;
+}
+
+Bear.prototype = {
+  constructor: Bear,
+};
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function () {
+    console.log("nom nom nom");
+  }
+};
+
+// 18. Inherit Behaviors from a Supertype
+/*
+Use Object.create to make two instances of Animal
+named duck and beagle.
+*/
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+// Only change code below this line
+
+let duck = Object.create(Animal.prototype); // Change this line
+let beagle = Object.create(Animal.prototype); // Change this line
+
+// 19. Set the Child's Prototype to an Instance of the Parent
+/*
+Modify the code so that instances of Dog inherit from Animal.
+*/
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Dog() { }
+
+// Only change code below this line
+
+Dog.prototype = Object.create(Animal.prototype); // Added line
+let beagle = new Dog();
+
+// 20. Reset an Inherited Constructor Property
+/*
+Fix the code so duck.constructor and beagle.constructor
+return their respective constructors.
+*/
+
+function Animal() { }
+function Bird() { }
+function Dog() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype);
+
+// Only change code below this line
+
+Bird.prototype.constructor = Bird; // Added line
+let duck = new Bird();
+duck.constructor // Added line
+
+Dog.prototype.constructor = Dog; // Added line
+let beagle = new Dog();
+beagle.constructor // Added line
+
+// 21. Add Methods After Inheritance
+/*
+Add all necessary code so the Dog object inherits from Animal
+and the Dog's prototype constructor is set to Dog.
+Then add a bark() method to the Dog object so that beagle can both eat() and bark().
+The bark() method should print Woof! to the console.
+*/
+
+function Animal() { }
+Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+function Dog() { }
+
+// Only change code below this line
+Dog.prototype = Object.create(Animal.prototype); // Added to inherit from Animal
+Dog.prototype.constructor = Dog; // To set the prototype constructor to Dog
+Dog.prototype.bark = function() { // Add methods after inheritance
+  console.log("Woof!");
+}
+// Only change code above this line
+
+let beagle = new Dog();
+
+// 22. Override Inherited Methods
+/*
+Override the fly() method for Penguin so that it returns
+the string Alas, this is a flightless bird.
+*/
+
+function Bird() { }
+
+Bird.prototype.fly = function() { return "I am flying!"; };
+
+function Penguin() { }
+Penguin.prototype = Object.create(Bird.prototype);
+Penguin.prototype.constructor = Penguin;
+
+// Only change code below this line
+
+Penguin.prototype.fly = function() { // Added line
+  return "Alas, this is a flightless bird.";
+}
+
+// Only change code above this line
+
+let penguin = new Penguin();
+console.log(penguin.fly());
+
+// 23. Use a Mixin to Add Common Behavior Between Unrelated Objects
+/*
+Create a mixin named glideMixin that defines a method named glide.
+Then use the glideMixin to give both bird and boat the ability to glide.
+*/
+
+let bird = {
+  name: "Donald",
+  numLegs: 2
+};
+
+let boat = {
+  name: "Warrior",
+  type: "race-boat"
+};
+
+// Only change code below this line
+
+let glideMixin = function(obj) {
+  obj.glide = function() {
+    console.log("Gliding away!");
+  }
+};
+
+glideMixin(bird);
+glideMixin(boat);
+
+// 24. Use Closure to Protect Properties Within an Object from Being Modified Externally
+/*
+Change how weight is declared in the Bird function so it is a private variable.
+Then, create a method getWeight that returns the value of weight 15.
+*/
+
+function Bird() {
+   let weight = 15; // Previously this.weight = 15
+
+   this.getWeight = function(){
+     return weight;
+   }
+};
+
+// 25. Understand the Immediately Invoked Function Expression (IIFE)
+/*
+Rewrite the function makeNest and remove its call so instead
+it's an anonymous immediately invoked function expression (IIFE).
+*/
+
+(function() {
+  console.log("A cozy nest is ready");
+})();
+
+/* Previously
+function makeNest() {
+  console.log("A cozy nest is ready");
+}
+
+makeNest();
+*/
+
+// 26. Use an IIFE to Create a Module
+/*
+Create a module named funModule to wrap the two mixins isCuteMixin and singMixin.
+funModule should return an object.
+*/
+
+/* Previously
+let isCuteMixin = function(obj) {
+  obj.isCute = function() {
+    return true;
+  };
+};
+let singMixin = function(obj) {
+  obj.sing = function() {
+    console.log("Singing to an awesome tune");
+  };
+};
+*/
+
+// Solution
+let funModule = (function () {
+  return {
+    isCuteMixin: function() {
+      obj.isCute = function() {
+        return true;
+      };
+    },
+    singMixin: function(obj) {
+      obj.sing = function() {
+        console.log("Singing to an awesome tune");
+      };
+    }
+  }
+})();
