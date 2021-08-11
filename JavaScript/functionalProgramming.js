@@ -342,7 +342,7 @@ var ratings = watchList.map(item => ({
 
 console.log(JSON.stringify(ratings));
 
-// 7. Implement map on a Prototype
+// 8. Implement map on a Prototype
 /*
 Write your own Array.prototype.myMap(),
 which should behave exactly like Array.prototype.map().
@@ -369,7 +369,7 @@ var new_s = s.myMap(function(item) {
 
 console.log(new_s);
 
-// 8. Use the filter Method to Extract Data from an Array
+// 9. Use the filter Method to Extract Data from an Array
 /*
 The variable watchList holds an array of objects with information on several movies.
 Use a combination of filter and map on watchList to assign a new array of objects
