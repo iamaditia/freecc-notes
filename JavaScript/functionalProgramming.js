@@ -735,7 +735,7 @@ function getRating(watchList){
 }
 console.log(getRating(watchList));
 
-// 10. Use Higher-Order Functions map, filter, or reduce to Solve a Complex Problem
+// 16. Use Higher-Order Functions map, filter, or reduce to Solve a Complex Problem
 
 /*
 Complete the code for the squareList function using any combination of map(), filter(), and reduce().
