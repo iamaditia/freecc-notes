@@ -748,7 +748,11 @@ Note: Your function should not use any kind of for or while loops or the forEach
 
 const squareList = arr => {
   // Only change code below this line
-  return arr;
+  function checkPosInt(num) {
+    return num >= 1 && Number.isInteger(num);
+  }
+  var arr1 = arr.filter(checkPosInt);
+  return arr1.map(num => num*num);
   // Only change code above this line
 };
 
