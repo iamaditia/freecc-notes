@@ -758,3 +758,20 @@ const squareList = arr => {
 
 const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
 console.log(squaredIntegers);
+
+// 17. Sort an Array Alphabetically using the sort Method
+
+/*
+Use the sort method in the alphabeticalOrder function
+to sort the elements of arr in alphabetical order.
+The function should return the sorted array.
+*/
+
+function alphabeticalOrder(arr) {
+  // Only change code below this line
+
+  return arr
+  // Only change code above this line
+}
+
+alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
