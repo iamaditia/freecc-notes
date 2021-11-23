@@ -855,7 +855,24 @@ The output should not have any spaces
 
 // Only change code below this line
 function urlSlug(title) {
-
-
+const newTitle = title.split(/\W/).filter(w => w); // filter is to remove spaces in the beginning
+return newTitle.join("-").toLowerCase();
 }
 // Only change code above this line
+
+// 22. Use the every Method to Check that Every Element in an Array Meets a Criteria
+
+/*
+Use the every method inside the checkPositive function
+to check if every element in arr is positive.
+The function should return a Boolean value.
+*/
+
+function checkPositive(arr) {
+  // Only change code below this line
+
+
+  // Only change code above this line
+}
+
+checkPositive([1, 2, 3, -4, 5]);
