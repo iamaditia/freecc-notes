@@ -876,3 +876,27 @@ function checkPositive(arr) {
 }
 
 checkPositive([1, 2, 3, -4, 5]);
+
+// 23. Use the every Method to Check that Every Element in an Array Meets a Criteria
+
+/*
+Use the every method inside the checkPositive function
+to check if every element in arr is positive.
+The function should return a Boolean value.
+*/
+
+function checkPositive(arr) {
+  // Only change code below this line
+  return arr.every(x => x >= 0);
+  // Only change code above this line
+}
+
+console.log(checkPositive([1, 2, 3, -4, 5]));
+
+// 24. Use the some Method to Check that Any Elements in an Array Meet a Criteria
+
+/*
+Use the some method inside the checkPositive function
+to check if any element in arr is positive.
+The function should return a Boolean value.
+*/
